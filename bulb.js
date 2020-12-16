@@ -26,19 +26,23 @@ function onConnected() {
 	document.getElementById('connect-button').style.backgroundColor = pwrButtonColorOn;
 	
 	turnedOn = true;
-	getBleDataAll();
+	getBleDataAll(0);
 }
 
 function handleTemperature(temperature) {
 	bleData.temperature = temperature;
 	document.getElementById('tmp').innerHTML = temperature
-  // console.log('Temperature recived: ' + temperature + ' C');
+  console.log('Temperature recived: ' + temperature + ' C');
+
+  getBleDataAll(1); // simple state machine
 }
 
 function handleHumidity(humidity) {
 	bleData.humidity = humidity;
 	document.getElementById('hmd').innerHTML = humidity
-  // console.log('Humidity recived: ' + humidity + "%");
+  console.log('Humidity recived: ' + humidity + "%");
+
+  getBleDataAll(2);
 }
 
 function handleBatteryLevel(batteryLevel) {
@@ -47,17 +51,19 @@ function handleBatteryLevel(batteryLevel) {
   // console.log('Battery level recived: ' + batteryLevel + "%");
 }
 
-function getBleDataAll()
+function getBleDataAll(state)
 {
-	ble.getTemperature().then(handleTemperature)
-	.then(ble.getHumidity().then(handleHumidity))
-	
+	if (state == 0)
+		ble.getTemperature().then(handleTemperature);
+	else if (state == 1)
+		ble.getHumidity().then(handleHumidity);
+	// else if (state == 2)
 	// ble.getBatteryLevel().then(handleBatteryLevel);
 }
 
 function updValuesButton()
 {
-	getBleDataAll()
+	getBleDataAll(0);
 }
 
 function bleConnectButton() {
