@@ -4,8 +4,8 @@ let bleCharacteristic = [];
 var bluetoothDevice = null;
 let turnedOn = false;
 
-let pwrButtonColorOn = "#3366ff";//"#99ff99";//"#ffcc66 e6f2ff 0077e6";
-let pwrButtonColorOff = "#b3daff";
+let pwrButtonColorOn = "#3366ff";//"#99ff99";//"#ffcc66 e6f2ff 0077e6 3366ff";
+let pwrButtonColorOff = "#33334d"; //ff7b59
 
 function BleData() {
   this.temperature = 0;
@@ -49,8 +49,9 @@ function handleBatteryLevel(batteryLevel) {
 
 function getBleDataAll()
 {
-	ble.getTemperature().then(handleTemperature);
-	ble.getHumidity().then(handleHumidity);
+	ble.getTemperature().then(handleTemperature)
+	.then(ble.getHumidity().then(handleHumidity))
+	
 	// ble.getBatteryLevel().then(handleBatteryLevel);
 }
 

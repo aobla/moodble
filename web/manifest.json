@@ -1,7 +1,7 @@
 {
   "lang": "en",
-  "background_color": "#002966",
-  "theme_color": "#002966",
+  "background_color": "#111236",
+  "theme_color": "#111236",
   "name": "moodBLE",
   "short_name": "moodBLE",
   "display": "standalone",

@@ -1,18 +1,20 @@
 
-html, body, .grid-container { height: 100%; margin: 0; background: #4da3ff; }
+html, body, .grid-container { height: 100%; margin: 0; background: #111236; }
 /*https://grid.layoutit.com/ thanks*/
 .grid-container {
   display: grid;
- grid-template-columns: 1fr 1fr 0.5fr 0.5fr;
-  grid-template-rows: 0.6fr 1.5fr 1.3fr 0.6fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 0.5fr);
+  grid-template-rows: 0.7fr 1.4fr 1.4fr 0.5fr 0.8fr 0.2fr;
   gap: 0px 0px;
   justify-content: center;
   grid-template-areas:
+
     "name name name name"
     ". temperature cel ."
     ". humidity rh ."
     ". . . ."
-    "connect . update update";
+    "connect . update update"
+    ". . . .";
 }
 .name { 
     grid-area: name; 
@@ -33,21 +35,23 @@ html, body, .grid-container { height: 100%; margin: 0; background: #4da3ff; }
     grid-area: temperature; 
     align-self: center;
     justify-self: center; 
+    width: max-content;
 }
 .humidity { 
     grid-area: humidity; 
     align-self: center;
-    justify-self: center;   
+    justify-self: center; 
+    width: max-content; 
 }
 .cel { 
     grid-area: cel; 
     align-self: center;
-    /*justify-self: center; */   
+    justify-self: center;    
 }
 .rh { 
     grid-area: rh; 
     align-self: center;
-    /*justify-self: center;*/   
+    justify-self: center;   
 }
 
 .hidden {
@@ -56,22 +60,22 @@ html, body, .grid-container { height: 100%; margin: 0; background: #4da3ff; }
 }
 
 :root {
-  --val-color: #fff; /*6d6d6d*/
+  --val-color: #fff; /*6d6d6d 4da3ff*/
 }
 
 .icons {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 9vw;
+    font-size: 9vmin;
     color: #fff;
 }
 
 .buttons {
-    background-color: #b3daff;
+    background-color: #33334d;
     text-align: center;
-    width: 20vw;
-    height: 20vw;
+    width: 20vmin ;
+    height: 20vmin ;
     min-width: initial;    
 }
 
@@ -92,8 +96,8 @@ html, body, .grid-container { height: 100%; margin: 0; background: #4da3ff; }
 
 #title {
     font-family: 'Fredoka One';
-    font-size: 8vw;
-    color: var(--val-color);
+    font-size: 8vmin;
+    color: #ff7b59;
     line-height: 100%;
 }
 
@@ -108,12 +112,12 @@ html, body, .grid-container { height: 100%; margin: 0; background: #4da3ff; }
     line-height: 80%;
     margin: 0 auto;
     color : var(--val-color); 
-    font-size: 35vw;
+    font-size: 35vmin;
 }
 .view-sub {
     font-family: 'Fredoka One';
     line-height: 150%;
     margin: 0 auto;
     color : var(--val-color); 
-    font-size: 10vw;
+    font-size: 10vmin;
 }
